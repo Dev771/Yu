@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+import "../../LandingPage/landingpage.css"
 function SideVideo() {
 
     const [SideVideos, setSideVideos] = useState([])
@@ -24,9 +25,9 @@ function SideVideo() {
         var seconds = Math.floor(video.duration - minutes * 60);
 
        return <div style={{ display: 'flex', marginTop: '1rem', padding: '0 2rem' }}>
-        <div style={{ width:'40%', marginRight:'1rem' }}>
+        <div className='aspect' style={{ width:'40%', marginRight:'1rem' }}>
             <a href={`/video/${video._id}`}  style={{ color:'gray' }}>
-                <img style={{ width: '100%' }} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail" />
+                <img style={{ width: '100%',borderRadius: "5%" }} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail" />
             </a>
         </div>
 

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import {Avatar} from 'antd';
 const Upload = require('../../../../assets/images/upload.png');
 
 function RightMenu(props) {
@@ -20,6 +21,8 @@ function RightMenu(props) {
     });
   };
 
+  const username = localStorage.getItem("userImage")
+  // console.log(username)
   if (user.userData && !user.userData.isAuth) {
     return (
       <Menu mode={props.mode}>
@@ -33,14 +36,21 @@ function RightMenu(props) {
     )
   } else {
     return (
+      <div style={{display:"flex"}}>
+      <div style={{paddingTop:"15px"}}>
+      <Avatar src={username} size="medium"/>
+      </div>
       <Menu mode={props.mode}>
+        <Menu.Item>
+        </Menu.Item>
         <Menu.Item key="create">
           <a href="/video/upload"><img src={Upload} alt="Upload" /></a>
         </Menu.Item>
         <Menu.Item key="logout">
-          <a onClick={logoutHandler}>Logout</a>
+          <a onClick={logoutHandler} style={{fontSize : "1.5rem"}}>Logout</a>
         </Menu.Item>
       </Menu>
+      </div>
     )
   }
 }
